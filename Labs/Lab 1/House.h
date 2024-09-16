@@ -11,7 +11,7 @@ class House {
 		float price;
 
 	public:
-		House(); // default contructor
+		House(){} // default contructor
 		void setOwner(string name);
 		void setAddress(string location);
 		void setBedrooms(int noOfBedroom);
