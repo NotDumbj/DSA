@@ -1,4 +1,4 @@
-# DSA
+# Data Structure Algorithms
 Code of all DSA labs 
 
 
