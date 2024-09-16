@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <iomanip>
 #include "House.h"
-using std::cout, std::cin, std::endl, std::max, std::numeric_limits, std::streamsize;
+using namespace std;
 using std::string;
 
 House available[100];
@@ -16,11 +17,15 @@ void addHouse()
         string ownerName;
         string address;
         int bedrooms;
-        int price;
+        long double price;
 
-        House house;
+        House house;   
 
+        cout << "-----------------" << endl;
+        cout << "House No. " << houseCounter + 1 << endl;
+        cout << "-----------------" << endl;
         cout << "Owner : ";
+
         getline(cin, ownerName);
         house.setOwner(ownerName);
 
@@ -52,19 +57,23 @@ void addHouse()
 }
 void displayHouse()
 {
+    cout << left << setw(15) << "Owner"
+         << left << setw(20) << "Address" 
+         << right << setw(10) << "Bedrooms" 
+         << right << setw(10) << "Price" 
+         << endl;
+
+    cout << setfill('-') << setw(55) << "-" << setfill(' ') << endl;
+
     for (int i = 0; i < houseCounter; i++)
-    {
-        if (houseCounter == 0)
-        {
-            cout << "No houses available" << endl;
-            return;
-        }
+    {       
         if (houseCounter <= 99)
         {
-            cout << "Owner : " << available[i].getOwner() << endl;
-            cout << "Address : " << available[i].getAddress() << endl;
-            cout << "Bedrooms : " << available[i].getBedrooms() << endl;
-            cout << "Price : " << available[i].getPrice() << endl;
+            cout << left << setw(15) << available[i].getOwner() 
+            << left << setw(20) << available[i].getAddress() 
+            << right << setw(10) << available[i].getBedrooms()
+            << right << setw(10) << available[i].getPrice()
+            << endl;
         }
     }
 }

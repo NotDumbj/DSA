@@ -11,7 +11,7 @@ void House::setAddress(string location) {
 void House::setBedrooms(int noOfBedroom) {
 	bedrooms = noOfBedroom;
 }
-void House::setPrice(float amount) {
+void House::setPrice(long double amount) {
 	price = amount;
 }
 string House::getOwner() const {
@@ -23,6 +23,6 @@ string House::getAddress() const {
 int House::getBedrooms() const {
 	return bedrooms;
 }
-float House::getPrice() const {
+long double House::getPrice() const {
 	return price;
 }
