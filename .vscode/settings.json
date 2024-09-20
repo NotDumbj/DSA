@@ -2,6 +2,7 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "*.wmls": "javascriptlite",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string": "cpp"
     }
 }
