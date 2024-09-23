@@ -11,7 +11,7 @@ ExpressionHandler::ExpressionHandler(){
 }
 
 void ExpressionHandler::loadData(){
-    std::ifstream expressionFile("Assignments/Expression Checker 01/data/expressions.txt");
+    std::ifstream expressionFile("../data/expressions.txt");
     
     if(!expressionFile.is_open()){
         isfileReadable = false;
