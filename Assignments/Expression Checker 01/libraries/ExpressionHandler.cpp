@@ -1,4 +1,5 @@
 #include "ExpressionHandler.h"
+#include <Stack.h>
 #include <fstream>
 #include <iostream>
 
@@ -26,8 +27,45 @@ bool ExpressionHandler::checkExpression(int lineNumber){
     return isValid(data[lineNumber]);
 }
 
-bool ExpressionHandler::isValid(string expression){
-
+bool ExpressionHandler::isValid(string expression)
+{
+    Stack stack;
+    bool isValid;
+    char exp;
+    for (int i = 0; i < length(expression); i++)
+    {
+        if(expression[i] == '(' || expression[i] == '{' || expression[i] == '[')
+        {
+            stack.push(expression[i]);
+        }
+        else if(expression[i] == ')' || expression[i] == '}' || expression[i] == ']')
+        {
+            if(stack.isEmpty())
+            {
+                return false;
+            }
+            else
+            {
+                exp = stack.pop();
+                if (exp == '(' && expression[i] == ')')
+                {
+                    isValid = true;
+                }
+                else if (exp == '{' && expression[i] == '}')
+                {
+                    isValid = true;
+                }
+                else if (exp == '[' && expression[i] == ']')
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
 }
 
 void ExpressionHandler::displayData(){
