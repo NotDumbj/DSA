@@ -45,7 +45,7 @@ char Stack::pop()
     else
     {
         std::cerr << "Error: Stack Underflow" << std::endl;
-        return T();
+        return 0;
     }
 }
 
