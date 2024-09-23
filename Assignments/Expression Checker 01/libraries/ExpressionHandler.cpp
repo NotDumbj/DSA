@@ -64,12 +64,7 @@ bool ExpressionHandler::isValid(string expression)
                     return false;
                 }
             }
-
         }
-    }
-    if (!stack.isEmpty())
-    {
-        return false;
     }
 }
 
