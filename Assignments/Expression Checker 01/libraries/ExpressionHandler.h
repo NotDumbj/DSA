@@ -1,14 +1,15 @@
-#include <vector>
+#include <map>
 #include <string>
 
 using std::string;
 
 class ExpressionHandler{
 public:
-    void loadData();
+    ExpressionHandler();
     bool checkExpression(int lineNumber);
     bool isValid(string expression);
     void displayData();
 private:
-    std::vector<string> data;
+    std::map<int, string> data;
+    void loadData();
 };
