@@ -11,7 +11,11 @@ class House {
 		long double price;
 
 	public:
-		House(){} // default contructor
+		double rating;
+
+		bool operator<(const House& other) const;
+		House(){}
+		House(std::string name, std::string location, int noOfBedroom, long double amount);
 		void setOwner(string name);
 		void setAddress(string location);
 		void setBedrooms(int noOfBedroom);

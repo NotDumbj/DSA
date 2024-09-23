@@ -2,6 +2,18 @@
 #include <string>
 using std::string;
 
+
+House::House(std::string name, std::string location, int noOfBedroom, long double amount) {
+	setOwner(name);
+	setAddress(location);
+	setBedrooms(noOfBedroom);
+	setPrice(amount);
+	rating = amount / (double)noOfBedroom;
+}
+
+bool House::operator<(const House& other) const {
+    return this->rating < other.rating;
+}
 void House::setOwner(string name){
 	owner = name.length() > 20 ? name.substr(0, 20) : name;
 }

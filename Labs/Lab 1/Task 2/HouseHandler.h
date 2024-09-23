@@ -1,11 +1,12 @@
 #include <iostream>
 #include <iomanip>
+#include "House.h"
 #include <vector>
 #define MAX_HOUSES 100
 
 class HouseHandler{
 private:
-    std::vector<House> available[MAX_HOUSES];
+    std::vector<House> available;
     void readData();
     void writeData();
 public:
