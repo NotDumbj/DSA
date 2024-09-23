@@ -14,7 +14,8 @@ void userUI(ExpressionHandler expressionHandler){
     cout << string(15, '=') << endl;
     cout << "Press the desire option number." << endl;
     char choice;
-    while(true){
+    bool isRunning = true;
+    while(isRunning){
         choice = _getch();
         if(isdigit(choice)){
             bool isValid = false;
@@ -50,6 +51,7 @@ void userUI(ExpressionHandler expressionHandler){
                     break;
                 case '3':
                     clog << "Exiting..." << endl;
+                    isRunning = false;
                     return;
                 default:
                     cerr << "Error: Invalid choice." << endl;
