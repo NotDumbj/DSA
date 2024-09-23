@@ -1,0 +1,2 @@
+compile:     g++ "Assignments/Expression Checker 01/main/main.cpp" "Assignments/Expression Checker 01/libraries/Stack.cpp" "Assignments/Expression Checker 01/libraries/ExpressionHandler.cpp" -o "Assignments/Expression Checker 01/Expression Validator.exe"
+execute:    ./"Assignments/Expression Checker 01/Expression Validator.exe"

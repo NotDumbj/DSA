@@ -5,6 +5,8 @@ using std::string;
 
 class ExpressionHandler{
 public:
+    bool isfileReadable;
+    int dataSize;
     ExpressionHandler();
     bool checkExpression(int lineNumber);
     bool isValid(string expression);

@@ -19,7 +19,7 @@ class Stack
     private:
         int top;
         int maxLimit;
-        int items;
+        char* items;
 };
 
 #endif

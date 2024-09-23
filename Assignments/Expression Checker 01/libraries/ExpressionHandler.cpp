@@ -1,18 +1,21 @@
 #include "ExpressionHandler.h"
-#include <Stack.h>
+#include "Stack.h"
 #include <fstream>
+#include <string>
 #include <iostream>
 
 ExpressionHandler::ExpressionHandler(){
+    isfileReadable = true;
+    dataSize = 0;
     loadData();
 }
 
 void ExpressionHandler::loadData(){
-    std::ifstream expressionFile("../data/expressions.txt", std::ios::in);
+    std::ifstream expressionFile("Assignments/Expression Checker 01/data/expressions.txt");
     
     if(!expressionFile.is_open()){
-        std::cerr << "Error opening expressions file" << std::endl;
-        exit(1);
+        isfileReadable = false;
+        std::cerr << "Error: Expressions file not Opening." << std::endl;
     }
 
     std::string expression;
@@ -20,19 +23,21 @@ void ExpressionHandler::loadData(){
     while(std::getline(expressionFile, expression)){
         data[lineIndex] = expression;
         lineIndex++;
+        dataSize++;
     }
 }
 
 bool ExpressionHandler::checkExpression(int lineNumber){
+    std::cout << data[lineNumber];
     return isValid(data[lineNumber]);
 }
 
 bool ExpressionHandler::isValid(string expression)
 {
-    Stack stack;
-    bool isValid;
-    char exp;
-    for (int i = 0; i < length(expression); i++)
+    int length = expression.length();
+    Stack stack(length);
+    char character;
+    for (int i = 0; i < length; i++)
     {
         if(expression[i] == '(' || expression[i] == '{' || expression[i] == '[')
         {
@@ -46,26 +51,16 @@ bool ExpressionHandler::isValid(string expression)
             }
             else
             {
-                exp = stack.pop();
-                if (exp == '(' && expression[i] == ')')
-                {
-                    isValid = true;
-                }
-                else if (exp == '{' && expression[i] == '}')
-                {
-                    isValid = true;
-                }
-                else if (exp == '[' && expression[i] == ']')
-                {
-                    isValid = true;
-                }
-                else
-                {
+                character = stack.pop();
+                if (!((character == '(' && expression[i] == ')')
+                    || (character == '{' && expression[i] == '}')
+                    || (character == '[' && expression[i] == ']'))){
                     return false;
                 }
             }
         }
     }
+    return true;
 }
 
 void ExpressionHandler::displayData(){
