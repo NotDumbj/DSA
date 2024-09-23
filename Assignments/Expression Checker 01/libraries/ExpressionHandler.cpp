@@ -1,6 +1,6 @@
 #include "ExpressionHandler.h"
 #include <fstream>
-#include <iostream> // for cerr
+#include <iostream>
 
 ExpressionHandler::ExpressionHandler(){
     loadData();
