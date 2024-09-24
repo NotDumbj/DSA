@@ -5,6 +5,8 @@
 
 using namespace std;
 
+bool isRunning = true;
+
 void userUI(ExpressionHandler expressionHandler){
     cout << "\n" << "EXPRESSION VALIDATOR" << endl;
     cout << string(15, '=') << endl;
@@ -14,12 +16,14 @@ void userUI(ExpressionHandler expressionHandler){
     cout << string(15, '=') << endl;
     cout << "Press the desire option number." << endl;
     char choice;
-    bool isRunning = true;
     while(isRunning){
+        if(!isRunning){
+            break;
+        }
         choice = _getch();
         if(isdigit(choice)){
-            bool isValid = false;
-            string expression;
+            bool isValid = true;
+            string expression = "";
 
             switch(choice){
                 case '1':
@@ -34,6 +38,7 @@ void userUI(ExpressionHandler expressionHandler){
                         expressionHandler.displayData();
                         cout << "Enter the Line Number: ";
                         int lineNumber;
+                        cout << "\n";
                         if(cin >> lineNumber){
                             if (0 < lineNumber && lineNumber <= expressionHandler.dataSize){
                                 isValid = expressionHandler.checkExpression(lineNumber);
@@ -52,7 +57,7 @@ void userUI(ExpressionHandler expressionHandler){
                 case '3':
                     clog << "Exiting..." << endl;
                     isRunning = false;
-                    return;
+                    break;
                 default:
                     cerr << "Error: Invalid choice." << endl;
                     userUI(expressionHandler);

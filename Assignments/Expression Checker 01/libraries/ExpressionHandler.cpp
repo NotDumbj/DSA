@@ -60,6 +60,9 @@ bool ExpressionHandler::isValid(string expression)
             }
         }
     }
+    if(!stack.isEmpty()){
+        return false;
+    }
     return true;
 }
 
