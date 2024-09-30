@@ -1,5 +1,7 @@
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
+#undef max
 #include <limits>
 #include "../libraries/ExpressionHandler.h"
 
@@ -81,6 +83,7 @@ void userUI(ExpressionHandler expressionHandler){
 
 }
 int main(){
+    SetConsoleTitleA("Expression Validator");
     ExpressionHandler expHandler;
 
     userUI(expHandler);
