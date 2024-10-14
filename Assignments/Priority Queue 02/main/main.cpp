@@ -29,6 +29,7 @@ void userUI(PriorityQueue2D<string> pQueue){
                 case '1':
                     cout << "\nItems: " << endl;
                     pQueue.displayItems();
+                    userUI(pQueue);
                     break;
                 case '2':
                     cout << "\nInserting an Item: " << endl;
@@ -50,11 +51,12 @@ void userUI(PriorityQueue2D<string> pQueue){
                             _getch();
                         }
                     }
-                    cin.ignore();
+                    userUI(pQueue);
                     break;
                 case '3':
                     cout << "\nDeleting... " << endl;
                     cout << "\nItem deleted: " << pQueue.removeItem() << endl;
+                    userUI(pQueue);
                 case '4':
                     clog << "Exiting..." << endl;
                     isRunning = false;
@@ -64,12 +66,7 @@ void userUI(PriorityQueue2D<string> pQueue){
                     userUI(pQueue);
                     break;
             }
-            if(choice == '1' || choice == '2'){
-                cout << "\nThe Expression is ";
-                cout << (isValid ? "valid" : "not valid") << endl;
-                system("pause");
-                userUI(pQueue);
-            }
+            
         }
         else{
             cin.clear();

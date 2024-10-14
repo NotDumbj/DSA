@@ -10,25 +10,27 @@ class Queue{
         int capacity;
         int count;
         itemType* items;
+        void loadVector(std::vector<itemType> data);
         
     public:
         Queue();
         Queue(int size);
+        Queue(std::vector<itemType> data);
         ~Queue();
         bool isEmpty() const;
         bool isFull() const;
-        itemType front() const;
+        itemType getFront() const;
         int size() const;
         void insert(itemType item);
         itemType remove();
-        void loadVector(vector<itemType> data);
         void display() const;
 };
 
 template <class itemType>
 Queue<itemType>::Queue(std::vector<itemType> data)
 { 
-    front = rear = 0;
+    front = 0;
+    rear = -1;
     count = 0;
     capacity = data.size();
     items = new itemType[capacity];
@@ -37,7 +39,8 @@ Queue<itemType>::Queue(std::vector<itemType> data)
 
 template <class itemType>
 Queue<itemType>::Queue(){
-    front = rear = 0;
+    front = 0;
+    rear = -1;
     capacity = 10;
     count = 0;
     items = new itemType[capacity];
@@ -45,7 +48,8 @@ Queue<itemType>::Queue(){
 
 template <class itemType>
 Queue<itemType>::Queue(int size) : capacity(size) {
-    front = rear = 0;
+    front = 0;
+    rear = -1;
     count = 0;
     items = new itemType[capacity];
 }
@@ -56,17 +60,25 @@ Queue<itemType>::~Queue(){
 }
 
 template <class itemType>
-Queue<itemType>::display() const
-{
-    for (int i = front; i < rear; i++)
-    {
-        std::cout << i << ". " << items[i] << endl;
+void Queue<itemType>::display() const {
+    if (isEmpty()) {
+        std::cout << "Queue is empty." << std::endl;
+        return;
+    }
+
+    int i = front;
+    int j = 1;
+    int displayCount = 0;
+    while (displayCount < count) {
+        std::cout << j << ". " << items[i] << std::endl;
+        i = (i + 1) % capacity;
+        j++;
+        displayCount++;
     }
     std::cout << std::endl;
 }
-
 template <class itemType>
-Queue<itemType>::loadVector(vector<itemType> data)
+void Queue<itemType>::loadVector(std::vector<itemType> data)
 {
     for (int i = 0; i < data.size(); i++)
     {
@@ -99,8 +111,8 @@ void Queue<itemType>::insert(itemType item){
 template <class itemType>
 itemType Queue<itemType>::remove(){
     if(!(isEmpty())){
-        front = (front + 1) % capacity;
         itemType item = items[front];
+        front = (front + 1) % capacity;
         count--;
         return item;
     }
@@ -111,7 +123,7 @@ itemType Queue<itemType>::remove(){
 }
 
 template <class itemType>
-itemType Queue<itemType>::front() const{
+itemType Queue<itemType>::getFront() const{
     return items[front];
 }
 

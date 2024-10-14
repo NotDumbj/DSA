@@ -10,7 +10,7 @@ template <class itemType>
 class PriorityQueue2D
 {
     private:
-        std::map<std::string, int> priorityLevels;
+        int priorityLevels;
         Queue<itemType> *queues;
 
     public:
@@ -21,41 +21,45 @@ class PriorityQueue2D
         void loadData();
         void insertItem(int index, itemType value);
         itemType removeItem();
-        itemType displayItem();
+        void displayItems() const;
 };
 
 template <class itemType>
 PriorityQueue2D<itemType>::PriorityQueue2D()
 {
-    priorityLevel = 3;
-    queues = new Queue<itemType>[priorityLevel];
-    priorityLevels["student"] = 1;
-    priorityLevels["teacher"] = 2;
-    priorityLevels["parent"] = 3;
+    int priorityLevels = 3;
+    queues = new Queue<itemType>[priorityLevels];
 }
 
 template <class itemType>
+PriorityQueue2D<itemType>::~PriorityQueue2D() {
+    delete[] queues; 
+}
+
+
+template <class itemType>
 PriorityQueue2D<itemType>::PriorityQueue2D(int priorityLevels){
-    priorityLevel = priorityLevels;
-    queues = new Queue<itemType>[priorityLevel];
+    this->priorityLevels = priorityLevels;
+    queues = new Queue<itemType>[this->priorityLevels];
 }
 
 template <class itemType>
 PriorityQueue2D<itemType>::PriorityQueue2D(int priorityLevels, std::initializer_list<int> sizes){
-    priorityLevel = priorityLevels;
-    queues = new Queue<itemType>[priorityLevel]{
-        int i = 0;
-        for(int size : sizes){
-            queues[i] = Queue<itemType>(size);
+    this->priorityLevels = priorityLevels;
+    queues = new Queue<itemType>[this->priorityLevels]; 
+    int i = 0;
+    for (int size : sizes) {
+        if (i < priorityLevels) { 
+            queues[i] = Queue<itemType>(size); 
             i++;
         }
-    };
+    }
 }
 
 template <class itemType>
 void PriorityQueue2D<itemType>::loadData()
 {
-    path = "Assignments/Priority Queue 02/data/data.txt";
+    std::string path = "Assignments/Priority Queue 02/data/data.txt";
     std::ifstream inputFile(path);
     
     if(!inputFile.is_open())
@@ -64,31 +68,31 @@ void PriorityQueue2D<itemType>::loadData()
         return;
     }
 
-    vector<string> students;
-    vector<string> teachers;
-    vector<string> parents;
+    std::vector<std::string> students;
+    std::vector<std::string> teachers;
+    std::vector<std::string> parents;
     std::string lineData;
     while(std::getline(inputFile, lineData))
     {
-        if (lineData == "student")
+        if (lineData == "Student")
         {
             std::getline(inputFile, lineData);
             students.push_back(lineData);
         }
-        else if (lineData == "teacher")
+        else if (lineData == "Teacher")
         {
             std::getline(inputFile, lineData);
             teachers.push_back(lineData);
         }
-        else if (lineData == "parent")
+        else if (lineData == "Parent")
         {
             std::getline(inputFile, lineData);
             parents.push_back(lineData);
         }
     }
-    Queue<string> studentQueue = new Queue<string>(students);
-    Queue<string> teacherQueue = new Queue<string>(teachers);
-    Queue<string> parentQueue = new Queue<string>(parents);
+    Queue<std::string> studentQueue(students);
+    Queue<std::string> teacherQueue(teachers);
+    Queue<std::string> parentQueue(parents);
     queues[0] = studentQueue;
     queues[1] = teacherQueue;
     queues[2] = parentQueue;
@@ -115,26 +119,32 @@ itemType PriorityQueue2D<itemType>::removeItem()
     {
         return queues[0].remove();
     }
+    return itemType();
 }
 
 template <class itemType>
-PriorityQueue2D<itemType>::displayItem()
+void PriorityQueue2D<itemType>::displayItems() const
 {
-    count = 0;
-    std::cout << endl;
-    while(!queues[2].isEmpty())
-    {
-        std::cout << "Parents: ";
+    std::cout << std::endl;
+
+    if (!queues[2].isEmpty()) {
+        std::cout << "Parents: " << std::endl;
         queues[2].display();
+    } else {
+        std::cerr << "Error: Parents queue is empty.\n";
     }
-    while(!queues[1].isEmpty())
-    {
-        std::cout << "Teachers: ";
+
+    if (!queues[1].isEmpty()) {
+        std::cout << "Teachers: " << std::endl;
         queues[1].display();
+    } else {
+        std::cerr << "Error: Teachers queue is empty.\n";
     }
-    while(!queues[0].isEmpty())
-    {
-        std::cout << "Students: ";
+
+    if (!queues[0].isEmpty()) {
+        std::cout << "Students: " << std::endl;
         queues[0].display();
+    } else {
+        std::cerr << "Error: Students queue is empty.\n";
     }
 }
