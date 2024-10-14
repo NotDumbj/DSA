@@ -1,5 +1,5 @@
 #include<iostream>
-#include<conio>
+#include<conio.h>
 #include"../libraries/PriorityQueue.h"
 using namespace std;
 
