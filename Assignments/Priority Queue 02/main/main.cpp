@@ -1,5 +1,6 @@
 #include<iostream>
 #include<conio.h>
+#include<string>
 #include"../libraries/PriorityQueue.h"
 using namespace std;
 
@@ -26,13 +27,13 @@ void userUI(PriorityQueue2D<string> pQueue){
 
             switch(choice){
                 case '1':
-                    cout << "\nItems: " << endl
+                    cout << "\nItems: " << endl;
                     pQueue.displayItems();
                     break;
                 case '2':
                     cout << "\nInserting an Item: " << endl;
                     cout << "Choose the Priority Level: " << endl;
-                    cout << "1. Student"
+                    cout << "1. Student" << endl;
                     cout << "2. Teacher" << endl;
                     cout << "3. Parent" << endl;
                     char priorityLevel;
@@ -52,19 +53,22 @@ void userUI(PriorityQueue2D<string> pQueue){
                     cin.ignore();
                     break;
                 case '3':
+                    cout << "\nDeleting... " << endl;
+                    cout << "\nItem deleted: " << pQueue.removeItem() << endl;
+                case '4':
                     clog << "Exiting..." << endl;
                     isRunning = false;
                     break;
                 default:
                     cerr << "Error: Invalid choice." << endl;
-                    userUI(expressionHandler);
+                    userUI(pQueue);
                     break;
             }
             if(choice == '1' || choice == '2'){
                 cout << "\nThe Expression is ";
                 cout << (isValid ? "valid" : "not valid") << endl;
                 system("pause");
-                userUI(expressionHandler);
+                userUI(pQueue);
             }
         }
         else{
