@@ -94,13 +94,13 @@ void PriorityQueue2D<itemType>::loadData()
 }
 
 template <class itemType>
-PriorityQueue2D<itemType>::insertItem(int index, itemType value)
+void PriorityQueue2D<itemType>::insertItem(int index, itemType value)
 {
     queues[index].insert(value);
 }
 
 template <class itemType>
-PriorityQueue2D<itemType>::removeItem()
+itemType PriorityQueue2D<itemType>::removeItem()
 {
     while(!queues[2].isEmpty())
     {
