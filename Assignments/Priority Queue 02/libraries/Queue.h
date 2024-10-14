@@ -22,15 +22,8 @@ class Queue{
         void insert(itemType item);
         itemType remove();
         void loadVector(vector<itemType> data);
+        void display() const;
 };
-template <class itemType>
-Queue<itemType>::loadVector(vector<itemType> data)
-{
-    for (int i = 0; i < data.size(); i++)
-    {
-        insert(data[i]);
-    }
-}
 
 template <class itemType>
 Queue<itemType>::Queue(std::vector<itemType> data)
@@ -60,6 +53,25 @@ Queue<itemType>::Queue(int size) : capacity(size) {
 template <class itemType>
 Queue<itemType>::~Queue(){
     delete[] items;
+}
+
+template <class itemType>
+Queue<itemType>::display() const
+{
+    for (int i = front; i < rear; i++)
+    {
+        std::cout << i << ". " << items[i] << endl;
+    }
+    std::cout << std::endl;
+}
+
+template <class itemType>
+Queue<itemType>::loadVector(vector<itemType> data)
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        insert(data[i]);
+    }
 }
 
 template <class itemType>
