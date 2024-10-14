@@ -19,6 +19,8 @@ class PriorityQueue2D
         PriorityQueue2D(int noOfPriorityLevels, std::initializer_list<int> sizes);
         ~PriorityQueue2D();
         void loadData();
+        void insertItem(int index, itemType value);
+        itemType removeItem();
 };
 
 template <class itemType>
@@ -26,9 +28,9 @@ PriorityQueue2D<itemType>::PriorityQueue2D()
 {
     priorityLevel = 3;
     queues = new Queue<itemType>[priorityLevel];
-    priorityLevels["student"] = 0;
-    priorityLevels["teacher"] = 1;
-    priorityLevels["parent"] = 2;
+    priorityLevels["student"] = 1;
+    priorityLevels["teacher"] = 2;
+    priorityLevels["parent"] = 3;
 }
 
 template <class itemType>
@@ -86,4 +88,30 @@ void PriorityQueue2D<itemType>::loadData()
     Queue<string> studentQueue = new Queue<string>(students);
     Queue<string> teacherQueue = new Queue<string>(teachers);
     Queue<string> parentQueue = new Queue<string>(parents);
+    queues[0] = studentQueue;
+    queues[1] = teacherQueue;
+    queues[2] = parentQueue;
+}
+
+template <class itemType>
+PriorityQueue2D<itemType>::insertItem(int index, itemType value)
+{
+    queues[index].insert(value);
+}
+
+template <class itemType>
+PriorityQueue2D<itemType>::removeItem()
+{
+    while(!queues[2].isEmpty())
+    {
+        return queues[2].remove();
+    }
+    while(!queues[1].isEmpty() && queues[2].isEmpty())
+    {
+        return queues[1].remove();
+    }
+    while(!queues[0].isEmpty() && queues[1].isEmpty)
+    {
+        return queues[0].remove();
+    }
 }
