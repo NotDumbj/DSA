@@ -21,6 +21,7 @@ class PriorityQueue2D
         void loadData();
         void insertItem(int index, itemType value);
         itemType removeItem();
+        itemType displayItem();
 };
 
 template <class itemType>
@@ -106,12 +107,34 @@ PriorityQueue2D<itemType>::removeItem()
     {
         return queues[2].remove();
     }
-    while(!queues[1].isEmpty() && queues[2].isEmpty())
+    while(!queues[1].isEmpty())
     {
         return queues[1].remove();
     }
-    while(!queues[0].isEmpty() && queues[1].isEmpty)
+    while(!queues[0].isEmpty())
     {
         return queues[0].remove();
+    }
+}
+
+template <class itemType>
+PriorityQueue2D<itemType>::displayItem()
+{
+    count = 0;
+    std::cout << endl;
+    while(!queues[2].isEmpty())
+    {
+        std::cout << "Parents: ";
+        queues[2].display();
+    }
+    while(!queues[1].isEmpty())
+    {
+        std::cout << "Teachers: ";
+        queues[1].display();
+    }
+    while(!queues[0].isEmpty())
+    {
+        std::cout << "Students: ";
+        queues[0].display();
     }
 }
