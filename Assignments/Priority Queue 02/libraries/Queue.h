@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+
 
 template <class itemType>
 class Queue{
@@ -19,7 +21,26 @@ class Queue{
         int size() const;
         void insert(itemType item);
         itemType remove();
+        void loadVector(vector<itemType> data);
 };
+template <class itemType>
+Queue<itemType>::loadVector(vector<itemType> data)
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        insert(data[i]);
+    }
+}
+
+template <class itemType>
+Queue<itemType>::Queue(std::vector<itemType> data)
+{ 
+    front = rear = 0;
+    count = 0;
+    capacity = data.size();
+    items = new itemType[capacity];
+    loadVector(data);
+}
 
 template <class itemType>
 Queue<itemType>::Queue(){
