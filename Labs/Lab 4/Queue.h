@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 template <class itemType>
 class Queue{
@@ -15,9 +16,10 @@ class Queue{
         ~Queue();
         bool isEmpty() const;
         bool isFull() const;
-        itemType front() const;
+        itemType getFront() const;
         int size() const;
         void insert(itemType item);
+        void reverse(int k);
         itemType remove();
 };
 
@@ -78,7 +80,7 @@ itemType Queue<itemType>::remove(){
 }
 
 template <class itemType>
-itemType Queue<itemType>::front() const{
+itemType Queue<itemType>::getFront() const{
     return items[front];
 }
 
@@ -87,4 +89,25 @@ int Queue<itemType>::size() const{
     return count;
 }
 
+template <class itemType>
+void Queue<itemType>::reverse(int k){
+    Queue<itemType> queue;
+    int i = 0;
+    itemType arrItem[k];
+    if(!isEmpty()){
+        while(front != k){
+            arrItem[i] = remove();
+            i++;
+        }
+    }
 
+    for (int j = k - 1; j >= 0; j--){
+        queue.insert(arrItem[j]);
+    }
+
+    while(!isEmpty()){
+        queue.insert(remove());
+    }
+
+    *this = queue;
+}
