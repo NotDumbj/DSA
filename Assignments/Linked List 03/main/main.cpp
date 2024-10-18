@@ -1,16 +1,16 @@
 #include <iostream>
 #include <limits>
-#include "../libraries/list.h"
+#include "../libraries/doublelinkedlist.h"
 
 using namespace std;
 
 void takeInput(int &input);
 void printMenu();
-void useList(LinkedList &list);
+void useList(DoubleLinkedList &list);
 
 main()
 {
-    LinkedList list;
+    DoubleLinkedList list;
     list.loadList();
     useList(list);
     list.saveList();
@@ -55,7 +55,7 @@ void takeInput(int &input)
     while(check);
 }
 
-void useList(LinkedList &list)
+void useList(DoubleLinkedList &list)
 {
     int choice, input, index; // inputList used to input in list 
     do
