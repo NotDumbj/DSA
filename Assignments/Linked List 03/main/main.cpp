@@ -11,7 +11,11 @@ void useList(LinkedList &list);
 main()
 {
     LinkedList list;
+    list.loadList();
     useList(list);
+    list.saveList();
+    system("pause");
+    return 0;
 }
 
 void printMenu()

@@ -19,4 +19,6 @@ class LinkedList{
         int dAE();
         int iAM(int x, int index);
         int dAM(int index);
+        void saveList();
+        void loadList();
 };
