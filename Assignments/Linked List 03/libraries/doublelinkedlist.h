@@ -20,4 +20,5 @@ class DoubleLinkedList{
         int dAE();
         int iAM(int x, int index);
         int dAM(int index);
+        void clear();
 };

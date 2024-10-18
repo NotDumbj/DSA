@@ -141,3 +141,12 @@ int DoubleLinkedList::dAM(int index){
 
     return x;
 }
+
+void DoubleLinkedList::clear(){
+    Nodeptr p = list->prev;
+    while(p->prev != nullptr){
+        Nodeptr q = p->next;
+        delete p;
+        p = q;
+    }
+}
