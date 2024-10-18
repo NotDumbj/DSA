@@ -1,0 +1,2 @@
+compile:     g++ "Assignments/Linked List 03/main/main.cpp" "Assignments/Linked List 03/libraries/list.cpp" -o "Assignments/Linked List 03/List Manager.exe"
+execute:    ./"Assignments/Linked List 03/List Manager.exe"

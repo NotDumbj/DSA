@@ -71,23 +71,19 @@ void useList(LinkedList &list)
         }
         else if (choice == 3)
         {
-            cout << "Enter the element to be deleted: ";
+            cout << "Enter the element to be inserted: ";
             cin >> input;
-            cout << "Enter the index of the element: ":
+            cout << "Enter the index of the element: ";
             cin >> index;
             list.iAM(input,index);
         }
         else if (choice == 4)
         {
-            cout << "Enter the element to be deleted: ";
-            cin >> input;
-            list.dAS(input);
+            list.dAS();
         }
         else if (choice == 5)
         {
-            cout << "Enter the element to be deleted: ";
-            cin >> input;
-            list.dAE(input);
+            list.dAE();
         }
         else if (choice == 6)
         {
@@ -99,11 +95,14 @@ void useList(LinkedList &list)
         {
             cout << "Enter the element to search for: ";
             cin >> input;
-            list.find(input);
+            Nodeptr node = list.find(input);
+            cout << ((node == nullptr) ? "Element not found" : "Element found") << endl; 
+            system("pause");
         }
         else if (choice == 8)
         {
             list.traverse();
+            system("pause");
         }
     }
     while(choice != 9);
