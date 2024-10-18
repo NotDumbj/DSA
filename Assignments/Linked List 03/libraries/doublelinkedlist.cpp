@@ -1,5 +1,6 @@
 #include "doublelinkedlist.h"
 #include <iostream>
+#include <fstream>
 
 DoubleLinkedList::DoubleLinkedList(){
     list = nullptr;
@@ -140,4 +141,25 @@ int DoubleLinkedList::dAM(int index){
     length--;
 
     return x;
+}
+
+void DoubleLinkedList::saveList()
+{
+    std::ofstream file("data/list.txt");
+    for(Nodeptr p = list; p != nullptr; p = p->prev)
+    {
+        file << p->data << std::endl;
+    }
+    file.close();
+}
+
+void DoubleLinkedList::loadList()
+{
+    std::ifstream file("data/list.txt");
+    int x;
+    while(file >> x)
+    {
+        iAS(x);
+    }
+    file.close();
 }
