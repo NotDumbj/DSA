@@ -1,5 +1,6 @@
 #include "list.h"
 #include <iostream>
+#include <fstream>
 
 LinkedList::LinkedList(){
     head = nullptr;
@@ -143,4 +144,33 @@ int LinkedList::dAM(int index){
     length--;
 
     return x;
+}
+
+void LinkedList::saveList()
+{
+    std::ofstream file("data/list.txt");
+    for(Nodeptr p = head; p != nullptr; p = p->next)
+    {
+        file << p->data << std::endl;
+    }
+    file.close();
+}
+
+void LinkedList::loadList()
+{
+    std::ifstream file("data/list.txt");
+    if(file.is_open())
+    {
+        int x;
+        while(file >> x)
+        {
+            iAE(x);
+        }
+        file.close();
+    }
+    else
+    {
+        std::cerr << "File not found" << std::endl;
+        system("pause");
+    }
 }
