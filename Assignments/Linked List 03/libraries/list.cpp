@@ -20,6 +20,11 @@ int LinkedList::dAS(){
     if(head == nullptr){
         return -1;
     }
+    if(head->next == nullptr){
+        int x = head->data;
+        head = nullptr;
+        return x;
+    }
     Nodeptr p = head->next;
     int x = head->data;
     delete head;
