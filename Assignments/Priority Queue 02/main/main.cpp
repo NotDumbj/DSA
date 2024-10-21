@@ -1,6 +1,8 @@
 #include<iostream>
 #include<conio.h>
 #include<string>
+#include <Windows.h>
+#undef max
 #include<limits>
 #include<fstream>
 #include"../libraries/pq2d.h"
@@ -13,6 +15,7 @@ void loadData(PriorityQueue2d<string> &pQueue);
 
 int main()
 {   
+    SetConsoleTitleA("Priority Queue Manager");
     PriorityQueue2d<string> pQueue;
     loadData(pQueue);
     userUI(pQueue);
