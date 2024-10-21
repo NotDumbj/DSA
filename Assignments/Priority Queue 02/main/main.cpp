@@ -21,7 +21,7 @@ int main()
 }
 
 void loadData(PriorityQueue2d<string> &pQueue){
-    std::string path = "Assignments/Priority Queue 02/data/data.txt";
+    std::string path = "data/data.txt";
     std::ifstream inputFile(path);
     
     if(!inputFile.is_open())
