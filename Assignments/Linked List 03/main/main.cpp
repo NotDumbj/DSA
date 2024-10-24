@@ -1,4 +1,6 @@
 #include <iostream>
+#include <Windows.h>
+#undef max
 #include <limits>
 #include "../libraries/doublelinkedlist.h"
 
@@ -10,6 +12,7 @@ void useList(DoubleLinkedList &list);
 
 main()
 {
+    SetConsoleTitleA("Linked List");
     DoubleLinkedList list;
     list.loadList();
     useList(list);
