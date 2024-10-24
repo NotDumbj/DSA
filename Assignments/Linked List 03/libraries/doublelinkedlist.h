@@ -1,12 +1,14 @@
 typedef struct Node* Nodeptr;
 
-struct Node{
+struct Node
+{
     int data;
     Nodeptr next;
     Nodeptr prev;
 };
 
-class DoubleLinkedList{
+class DoubleLinkedList
+{
     private:
         Nodeptr list;
     public:

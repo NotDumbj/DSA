@@ -1,11 +1,13 @@
 typedef struct Node* Nodeptr;
 
-struct Node{
+struct Node
+{
     int data;
     Nodeptr next;
 };
 
-class LinkedList{
+class LinkedList
+{
     private:
         Nodeptr head;
     public:

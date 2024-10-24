@@ -2,12 +2,14 @@
 #include <iostream>
 #include <fstream>
 
-DoubleLinkedList::DoubleLinkedList(){
+DoubleLinkedList::DoubleLinkedList()
+{
     list = nullptr;
     length = 0;
 }
 
-void DoubleLinkedList::iAS(int x){
+void DoubleLinkedList::iAS(int x)
+{
     Nodeptr p = new Node;
     p->data = x;
     p->prev = list;
@@ -17,7 +19,8 @@ void DoubleLinkedList::iAS(int x){
     length++;
 }
 
-int DoubleLinkedList::dAS(){
+int DoubleLinkedList::dAS()
+{
     if(list == nullptr){
         return -1;
     }
@@ -36,13 +39,15 @@ int DoubleLinkedList::dAS(){
     return x;
 }
 
-void DoubleLinkedList::traverse(){
+void DoubleLinkedList::traverse()
+{
     for(Nodeptr p = list; p != nullptr; p = p->prev){
         std::clog << p->data << std::endl;
     }
 }
 
-Nodeptr DoubleLinkedList::find(int x){
+Nodeptr DoubleLinkedList::find(int x)
+{
     for(Nodeptr p = list; p != nullptr; p = p->prev){
         if(p->data == x){
             return p;
@@ -51,7 +56,8 @@ Nodeptr DoubleLinkedList::find(int x){
     return nullptr;
 }
 
-void DoubleLinkedList::iAE(int x){
+void DoubleLinkedList::iAE(int x)
+{
     if(list == nullptr){
         iAS(x);
     }
@@ -68,7 +74,8 @@ void DoubleLinkedList::iAE(int x){
     length++;
 }
 
-int DoubleLinkedList::dAE(){
+int DoubleLinkedList::dAE()
+{
     if(list == nullptr){
         return -1;
     }
@@ -89,7 +96,8 @@ int DoubleLinkedList::dAE(){
     return x;
 }
 
-int DoubleLinkedList::iAM(int x, int index){
+int DoubleLinkedList::iAM(int x, int index)
+{
     Nodeptr p = list;
     int i = 0;
     Nodeptr q = nullptr;
@@ -117,7 +125,8 @@ int DoubleLinkedList::iAM(int x, int index){
     return 0;
 }
 
-int DoubleLinkedList::dAM(int index){
+int DoubleLinkedList::dAM(int index)
+{
     Nodeptr p = list;
     int i = 0;
     Nodeptr q = nullptr;
@@ -164,7 +173,8 @@ void DoubleLinkedList::loadList()
     file.close();
 }
 
-void DoubleLinkedList::clear(){
+void DoubleLinkedList::clear()
+{
     Nodeptr p = list->prev;
     while(p->prev != nullptr){
         Nodeptr q = p->next;

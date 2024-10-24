@@ -2,13 +2,15 @@
 #include <iostream>
 #include <fstream>
 
-LinkedList::LinkedList(){
+LinkedList::LinkedList()
+{
     head = nullptr;
     length = 0;
 
 }
 
-void LinkedList::iAS(int x){
+void LinkedList::iAS(int x)
+{
     Nodeptr p = new Node;
     p->data = x;
     p->next = head;
@@ -17,11 +19,14 @@ void LinkedList::iAS(int x){
     length++;
 }
 
-int LinkedList::dAS(){
-    if(head == nullptr){
+int LinkedList::dAS()
+{
+    if(head == nullptr)
+    {
         return -1;
     }
-    if(head->next == nullptr){
+    if(head->next == nullptr)
+    {
         int x = head->data;
         head = nullptr;
         return x;
@@ -36,13 +41,15 @@ int LinkedList::dAS(){
     return x;
 }
 
-void LinkedList::traverse(){
+void LinkedList::traverse()
+{
     for(Nodeptr p = head; p != nullptr; p = p->next){
         std::clog << p->data << std::endl;
     }
 }
 
-Nodeptr LinkedList::find(int x){
+Nodeptr LinkedList::find(int x)
+{
     for(Nodeptr p = head; p != nullptr; p = p->next){
         if(p->data == x){
             return p;
@@ -51,7 +58,8 @@ Nodeptr LinkedList::find(int x){
     return nullptr;
 }
 
-void LinkedList::iAE(int x){
+void LinkedList::iAE(int x)
+{
     if(head == nullptr){
         iAS(x);
     }
@@ -67,7 +75,8 @@ void LinkedList::iAE(int x){
     length++;
 }
 
-int LinkedList::dAE(){
+int LinkedList::dAE()
+{
     if(head == nullptr){
         return -1;
     }
@@ -91,7 +100,8 @@ int LinkedList::dAE(){
     return x;
 }
 
-int LinkedList::iAM(int x, int index){
+int LinkedList::iAM(int x, int index)
+{
     Nodeptr p = head;
     int i = 0;
     Nodeptr q = nullptr;
@@ -118,7 +128,8 @@ int LinkedList::iAM(int x, int index){
     return 0;
 }
 
-int LinkedList::dAM(int index){
+int LinkedList::dAM(int index)
+{
     Nodeptr p = head;
     int i = 0;
     Nodeptr q = nullptr;
