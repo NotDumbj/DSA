@@ -1,2 +1,5 @@
 compile:     g++ "Assignments/Priority Queue 02/main/main.cpp" -o "Assignments/Priority Queue 02/Priority Queue Manager.exe"
 execute:    ./"Assignments/Priority Queue 02/Priority Queue Manager.exe"
+
+compile:     g++ "Assignments/PQ1D 04/main/main.cpp" -o "Assignments/PQ1D 04/Priority Queue Manager.exe"
+execute:    ./"Assignments/PQ1D 04/Priority Queue Manager.exe"
