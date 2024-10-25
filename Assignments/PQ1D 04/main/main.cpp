@@ -26,16 +26,19 @@ int main()
     return 0;
 }
 
-void loadData(PriorityQueue1D &pQ){
+void loadData(PriorityQueue1D &pQ)
+{
     ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open()) 
+    {
         throw std::runtime_error("Error opening file");
     }
 
     Node* pq = nullptr;
     string role, name;
     
-    while (file >> role >> ws && getline(file, name)) {
+    while (file >> role >> ws && getline(file, name)) 
+    {
         int priority = pQ.getPriority(role);
         pQ.insert(name, role, priority);
     }
@@ -43,7 +46,8 @@ void loadData(PriorityQueue1D &pQ){
     file.close();
 }
 
-void userUI(PriorityQueue1D &pQueue){
+void userUI(PriorityQueue1D &pQueue)
+{
     cout << "\n" << "PRIORITY QUEUE 1D" << endl;
     cout << string(15, '=') << endl;
     cout << "1. Display Items" << endl;
@@ -53,16 +57,20 @@ void userUI(PriorityQueue1D &pQueue){
     cout << string(15, '=') << endl;
     cout << "Press the desire option number." << endl;
     char choice;
-    while(isRunning){
-        if(!isRunning){
+    while(isRunning)
+    {
+        if(!isRunning)
+        {
             break;
         }
         choice = _getch();
-        if(isdigit(choice)){
+        if(isdigit(choice))
+        {
             bool isValid = true;
             string expression = "";
 
-            switch(choice){
+            switch(choice)
+            {
                 case '1':
                     cout << "\nItems: " << endl;
                     pQueue.display();
@@ -76,22 +84,27 @@ void userUI(PriorityQueue1D &pQueue){
                     cout << "3. Parent" << endl;
                     cout << "=> ";
                     int priorityLevel;
-                    if (cin >> priorityLevel){
+                    if (cin >> priorityLevel)
+                    {
                         cout << "\nEnter Name: " << endl;
                         string name;
                         cin.ignore();
                         getline(cin, name);
-                        if (priorityLevel == 3){
+                        if (priorityLevel == 3)
+                        {
                             pQueue.insert(name, "Parent", priorityLevel);
                         }
-                        else if (priorityLevel == 2){
+                        else if (priorityLevel == 2)
+                        {
                             pQueue.insert(name, "Teacher", priorityLevel);
                         }
-                        else if (priorityLevel == 1){
+                        else if (priorityLevel == 1)
+                        {
                             pQueue.insert(name, "Student", priorityLevel);
                         }
                     }
-                    else{
+                    else
+                    {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cerr << "Error Msg: Invalid input" << endl;
@@ -113,9 +126,11 @@ void userUI(PriorityQueue1D &pQueue){
             }
             
         }
-        else{
+        else
+        {
             cin.clear();
-            while(_kbhit()){
+            while(_kbhit())
+            {
                 _getch();
             }
         }
