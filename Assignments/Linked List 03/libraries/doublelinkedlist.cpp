@@ -118,6 +118,7 @@ int DoubleLinkedList::iAM(int x, int index)
     r->data = x;
     r->prev = q->prev;
     r->next = q;
+    q->prev->next = r;
     q->prev = r;
 
     length++;
