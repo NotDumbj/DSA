@@ -13,7 +13,7 @@ public:
     BinarySearchTree();                // Constructor to initialize the tree
     bool IsEmpty() const;      // Returns true if the tree is empty
     void InsertItem(ItemType item);  // Insert an item into the tree
-    void RetrieveItem(ItemType& item, bool& found);  // Retrieve an item
+    bool RetrieveItem(ItemType& item);  // Retrieve an item
     void PrintTree(std::ofstream& outFile); // Print the tree contents
     ~BinarySearchTree();  
 private:
@@ -79,9 +79,10 @@ void BinarySearchTree<ItemType>::InsertItem(ItemType item) {
 // Function to retrieve an item from the tree
 
 template <class ItemType>
-void BinarySearchTree<ItemType>::RetrieveItem(ItemType& item, bool& found) {
-    found = false;
+bool BinarySearchTree<ItemType>::RetrieveItem(ItemType& item) {
+    bool found = false;
     RetrieveHelper(root, item, found);
+    return found;
 }
 
 // Helper function for retrieving

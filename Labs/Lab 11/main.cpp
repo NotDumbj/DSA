@@ -3,17 +3,29 @@
 
 using namespace std;
 
+
 int main()
 {
-    BinarySearchTree<int> bst;
-    bst.InsertItem(50);
-    bst.InsertItem(30);
-    bst.InsertItem(20);
-    bst.InsertItem(40);
-    bst.InsertItem(70);
-
-    cout << "Inorder traversal: ";
-    cout << bst.PrintTree();
-
+    BinarySearchTree<int> tree;
+    cout << "Simple binary insertion" << endl;
+    for(int i = 0; i < 10; i++)
+    {
+        int a = rand() % 10;
+        tree.InsertItem(a);
+        cout << a << " ";
+    }
+    cout << "\n\nEnter the number to find: ";
+    int b;
+    cin >> b;
+    if (tree.RetrieveItem(b))
+    {
+        cout << "\nNumber found" << endl;
+    }
+    else
+    {
+        cout << "\nNumber not found" << endl;
+    }
+    cout << endl;
+    system("pause");
     return 0;
 }
